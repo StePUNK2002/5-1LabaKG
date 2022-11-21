@@ -10,23 +10,17 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QMessageBox
 
 import main
-'''
-lineEdit - Путь файла
-lineEdit_2 - Минимальный порог
-lineEdit_3 - Максимальный порог
-lineEdit_4 - Минимальный рабочий диапозон
-lineEdit_5 - Максимальный рабочий диапозон
-'''
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(538, 328)
+        MainWindow.resize(685, 434)
         MainWindow.setWindowTitle("Лабораторная работа № 4")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(130, 10, 261, 51))
+        self.label.setGeometry(QtCore.QRect(210, 10, 261, 51))
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
@@ -38,37 +32,72 @@ class Ui_MainWindow(object):
         self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(20, 130, 121, 20))
+        self.label_3.setGeometry(QtCore.QRect(10, 180, 121, 20))
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(150, 110, 60, 16))
+        self.label_4.setGeometry(QtCore.QRect(140, 160, 60, 16))
         self.label_4.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_2.setGeometry(QtCore.QRect(150, 130, 61, 21))
+        self.lineEdit_2.setGeometry(QtCore.QRect(140, 180, 61, 21))
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(230, 110, 60, 16))
+        self.label_5.setGeometry(QtCore.QRect(220, 160, 60, 16))
         self.label_5.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_5.setObjectName("label_5")
         self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_3.setGeometry(QtCore.QRect(230, 130, 61, 21))
+        self.lineEdit_3.setGeometry(QtCore.QRect(220, 180, 61, 21))
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(10, 160, 121, 20))
+        self.label_6.setGeometry(QtCore.QRect(0, 210, 121, 20))
         self.label_6.setObjectName("label_6")
         self.lineEdit_4 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_4.setGeometry(QtCore.QRect(150, 160, 61, 21))
+        self.lineEdit_4.setGeometry(QtCore.QRect(140, 210, 61, 21))
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.lineEdit_5 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_5.setGeometry(QtCore.QRect(230, 160, 61, 21))
+        self.lineEdit_5.setGeometry(QtCore.QRect(220, 210, 61, 21))
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(160, 210, 211, 32))
+        self.pushButton.setGeometry(QtCore.QRect(230, 340, 211, 32))
         self.pushButton.setObjectName("pushButton")
+        self.label_7 = QtWidgets.QLabel(self.centralwidget)
+        self.label_7.setGeometry(QtCore.QRect(80, 130, 71, 16))
+        self.label_7.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_7.setObjectName("label_7")
+        self.label_9 = QtWidgets.QLabel(self.centralwidget)
+        self.label_9.setGeometry(QtCore.QRect(440, 130, 71, 16))
+        self.label_9.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_9.setObjectName("label_9")
+        self.lineEdit_6 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_6.setGeometry(QtCore.QRect(380, 170, 41, 21))
+        self.lineEdit_6.setObjectName("lineEdit_6")
+        self.lineEdit_7 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_7.setGeometry(QtCore.QRect(450, 170, 41, 21))
+        self.lineEdit_7.setObjectName("lineEdit_7")
+        self.lineEdit_8 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_8.setGeometry(QtCore.QRect(520, 170, 41, 21))
+        self.lineEdit_8.setObjectName("lineEdit_8")
+        self.lineEdit_9 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_9.setGeometry(QtCore.QRect(380, 210, 41, 21))
+        self.lineEdit_9.setObjectName("lineEdit_9")
+        self.lineEdit_10 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_10.setGeometry(QtCore.QRect(450, 210, 41, 21))
+        self.lineEdit_10.setObjectName("lineEdit_10")
+        self.lineEdit_11 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_11.setGeometry(QtCore.QRect(520, 210, 41, 21))
+        self.lineEdit_11.setObjectName("lineEdit_11")
+        self.lineEdit_12 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_12.setGeometry(QtCore.QRect(380, 250, 41, 21))
+        self.lineEdit_12.setObjectName("lineEdit_12")
+        self.lineEdit_13 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_13.setGeometry(QtCore.QRect(450, 250, 41, 21))
+        self.lineEdit_13.setObjectName("lineEdit_13")
+        self.lineEdit_14 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_14.setGeometry(QtCore.QRect(520, 250, 41, 21))
+        self.lineEdit_14.setObjectName("lineEdit_14")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 538, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 685, 24))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -78,11 +107,19 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    '''
+        lineEdit - Путь файла
+        lineEdit_2 - Минимальный порог
+        lineEdit_3 - Максимальный порог
+        lineEdit_4 - Минимальный рабочий диапозон
+        lineEdit_5 - Максимальный рабочий диапозон
+        '''
+
     def Action(self):
         try:
-            main.Action(self.lineEdit.text())
+            main.Action(self.lineEdit.text(), int(self.lineEdit_2.text()), int(self.lineEdit_3.text()), int(self.lineEdit_4.text()), int(self.lineEdit_5.text()))
         except:
-            dialog = QMessageBox(parent=self, text="Вы использовали неверный путь")
+            dialog = QMessageBox(parent=self, text="Проверьте поля на верность ввода")
             ret = dialog.exec()
 
     def retranslateUi(self, MainWindow):
@@ -93,7 +130,9 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "min"))
         self.label_5.setText(_translate("MainWindow", "max"))
         self.label_6.setText(_translate("MainWindow", "Рабочий диапозон"))
-        self.pushButton.setText(_translate("MainWindow", "Запустить задание"))
+        self.pushButton.setText(_translate("MainWindow", "Запустить все"))
+        self.label_7.setText(_translate("MainWindow", "Задание 2"))
+        self.label_9.setText(_translate("MainWindow", "Задание 3"))
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def __init__(self):
