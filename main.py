@@ -35,7 +35,7 @@ def Action(way, g11, g22, fmin1, fmax1, mat=[[-1, 0, 0],[0,1,0],[0,0,0]]):
         Image = img.copy()
 
         for i in range(0, len(R)): #высота
-            for j in range(0, len(R[0])):
+            for j in range(0, len(R[0])): #ширина
                 if Avg[i][j] < fmin:
                     Avg[i][j] = g1
                 if Avg[i][j] > fmax:
