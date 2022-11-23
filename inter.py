@@ -117,7 +117,9 @@ class Ui_MainWindow(object):
 
     def Action(self):
         try:
-            main.Action(self.lineEdit.text(), int(self.lineEdit_2.text()), int(self.lineEdit_3.text()), int(self.lineEdit_4.text()), int(self.lineEdit_5.text()))
+            pass
+            mat = [[int(self.lineEdit_6.text()),int(self.lineEdit_7.text()),int(self.lineEdit_8.text())],[int(self.lineEdit_9.text()),int(self.lineEdit_10.text()),int(self.lineEdit_11.text())],[int(self.lineEdit_12.text()),int(self.lineEdit_13.text()),int(self.lineEdit_14.text())]]
+            main.Action(self.lineEdit.text(), int(self.lineEdit_2.text()), int(self.lineEdit_3.text()), int(self.lineEdit_4.text()), int(self.lineEdit_5.text()), mat=mat)
         except:
             dialog = QMessageBox(parent=self, text="Проверьте поля на верность ввода")
             ret = dialog.exec()
