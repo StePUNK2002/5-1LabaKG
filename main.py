@@ -92,4 +92,4 @@ def Action(way, g11, g22, fmin1, fmax1, mat=[[-1, 0, 0],[0,1,0],[0,0,0]]):
     axs[1][0].imshow(image3)
     axs[1][1].imshow(image4)
     plt.show()
-Action("berserk.jpeg", 255, 255, 1, 2)
+#Action("berserk.jpeg", 255, 255, 1, 2)
