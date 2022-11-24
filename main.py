@@ -1,5 +1,4 @@
 import numpy as np
-from PIL import ImageFilter, Image
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
