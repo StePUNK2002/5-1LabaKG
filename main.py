@@ -74,6 +74,31 @@ def Action(way, g11, g22, fmin1, fmax1, mat=[[-1, 0, 0],[0,1,0],[0,0,0]]):
         Res[H][0] = AM + BM * (Avg[H][0] * mat[1][1] + Avg[H][1] * mat[1][2] + Avg[H - 1][0] * mat[0][0] + Avg[H - 1][1] * mat[0][1])
         Res[0][W] = AM + BM * (Avg[0][W] * mat[1][1] + Avg[0][W - 1] * mat[1][0] + Avg[1][W] * mat[2][1] + Avg[1][W - 1] * mat[0][2])
         Res[H][W] = AM + BM * ( Avg[H][W] * mat[1][1] + Avg[H - 1][W] * mat[0][1] + Avg[H][W - 1] * mat[1][0] + Avg[H - 1][W - 1] *mat[0][0])
+        for j in range(1, H - 1):
+            temp = 0
+            for im in range(0, 1):
+                for jm in range(-1, 1):
+                    temp = temp + Avg[j + jm][0 + im] * mat[1 + im][1 + jm]
+            Res[j][0] = AM + BM * temp
+
+            temp = 0
+            for im in range(-1, 0):
+                for jm in range(-1, 1):
+                    temp = temp + Avg[j + jm][W + im] * mat[1 + im][1 + jm]
+            Res[j][W] = AM + BM * temp
+
+        for i in range(1, W - 1):
+            temp = 0
+            for im in range(-1, 1):
+                for jm in range(0, 1):
+                    temp = temp + Avg[0 + jm][i + im] * mat[1 + im][1 + jm]
+            Res[0][i] = AM + BM * temp
+
+            temp = 0
+            for im in range(-1, 1):
+                for jm in range(-1, 0):
+                    temp = temp + Avg[H + jm][i + im] * mat[1 + im][1 + jm]
+            Res[H][i] = AM + BM * temp
         Image = np.zeros(img.shape)
         Image = img.copy()
         Image[:, :, 0] = Res
