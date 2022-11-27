@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 
-def Action(way, g11, g22, fmin1, fmax1, mat=[[-1, 0, 0],[0,1,0],[0,0,0]]):
+def Action(way, g11, g22, fmin1, fmax1, mat=[[-1, 0, 0],[0,0,0],[0,0,1]]):
     def rgb_to_gray(img):
         grayImage = np.zeros(img.shape)
         #срезы
@@ -52,52 +52,50 @@ def Action(way, g11, g22, fmin1, fmax1, mat=[[-1, 0, 0],[0,1,0],[0,0,0]]):
         AM = 128
         BM = 1 / 2
 
+        # Матрица определения границ по второй производной функции Гаусса
+
+        mat = [[-1, 0, 0], [0, 0, 0], [0, 0, 1]]
+        #        mat = [[-1,0,0], [0,0,0], [0,0,1]]
         R = np.array(img[:, :, 0])
         G = np.array(img[:, :, 1])
         B = np.array(img[:, :, 2])
 
+        Avg = R + G + B
+        Res = R + G + B
+        Tem = R + G + B
 
-        Avg = (R + G + B)
-        Res = (R + G + B)
+        Avg = np.resize(Avg, (len(R) + 2, len(R[0]) + 2))
+        Res = np.resize(Res, (len(R) + 2, len(R[0]) + 2))
 
-        for i in range(1, len(R) - 2):
-            for j in range(1, len(R[0]) - 2):
-                temp = 0
-                for im in range(-1, 1):
-                    for jm in range(-1, 1):
-                        temp = temp + Avg[i + im][j + jm] * mat[im + 1][jm + 1]
-                Res[i][j] = AM + BM * temp
-        H = len(R)-1
-        W = len(R[0])-1
-        Res[0][0] = AM + BM * (Avg[0][0] * mat[1][1] + Avg[0][1] * mat[1][2] + Avg[1][0] * mat[2][1] + Avg[1][1] * mat[2][2])
-        Res[H][0] = AM + BM * (Avg[H][0] * mat[1][1] + Avg[H][1] * mat[1][2] + Avg[H - 1][0] * mat[0][0] + Avg[H - 1][1] * mat[0][1])
-        Res[0][W] = AM + BM * (Avg[0][W] * mat[1][1] + Avg[0][W - 1] * mat[1][0] + Avg[1][W] * mat[2][1] + Avg[1][W - 1] * mat[0][2])
-        Res[H][W] = AM + BM * ( Avg[H][W] * mat[1][1] + Avg[H - 1][W] * mat[0][1] + Avg[H][W - 1] * mat[1][0] + Avg[H - 1][W - 1] *mat[0][0])
-        for j in range(1, H - 1):
-            temp = 0
-            for im in range(0, 1):
-                for jm in range(-1, 1):
-                    temp = temp + Avg[j + jm][0 + im] * mat[1 + im][1 + jm]
-            Res[j][0] = AM + BM * temp
+        for i in range(0, len(Tem) - 1):
+            for j in range(0, len(Tem[0] - 1)):
+                Avg[i + 1][j + 1] = Tem[i][j]
+                if i == 0:
+                    Avg[i][j + 1] = Tem[i][j]
+                if j == 0:
+                    Avg[i + 1][j] = Tem[i][j]
+                if i == len(Tem) - 1:
+                    Avg[i + 2][j + 1] = Tem[i][j]
+                if j == len(Tem[0]) - 1:
+                    Avg[i + 1][j + 2] = Tem[i][j]
 
-            temp = 0
-            for im in range(-1, 0):
-                for jm in range(-1, 1):
-                    temp = temp + Avg[j + jm][W + im] * mat[1 + im][1 + jm]
-            Res[j][W] = AM + BM * temp
+        for i in range(1, len(Avg) - 2):
+            for j in range(1, len(Avg[0]) - 2):
+                Res[i][j] = AM + BM * (
+                            Avg[i - 1][j - 1] * mat[0][0] + Avg[i - 1][j] * mat[1][0] + Avg[i - 1][j + 1] * mat[2][0] +
+                            Avg[i][j - 1] * mat[0][1] + Avg[i][j] * mat[1][1] + Avg[i][j + 1] * mat[2][1] + Avg[i + 1][
+                                j - 1] * mat[0][2] + Avg[i + 1][j] * mat[1][2] + Avg[i + 1][j + 1] * mat[2][2])
 
-        for i in range(1, W - 1):
-            temp = 0
-            for im in range(-1, 1):
-                for jm in range(0, 1):
-                    temp = temp + Avg[0 + jm][i + im] * mat[1 + im][1 + jm]
-            Res[0][i] = AM + BM * temp
+                if Res[i][j] > 255:
+                    Res[i][j] = 255
+                elif Res[i][j] < 0:
+                    Res[i][j] = 0
 
-            temp = 0
-            for im in range(-1, 1):
-                for jm in range(-1, 0):
-                    temp = temp + Avg[H + jm][i + im] * mat[1 + im][1 + jm]
-            Res[H][i] = AM + BM * temp
+        for i in range(0, len(Tem) - 1):
+            for j in range(0, len(Tem[0]) - 1):
+                Tem[i][j] = Res[i + 1][j + 1]
+        Res = Tem
+
         Image = np.zeros(img.shape)
         Image = img.copy()
         Image[:, :, 0] = Res
@@ -108,7 +106,7 @@ def Action(way, g11, g22, fmin1, fmax1, mat=[[-1, 0, 0],[0,1,0],[0,0,0]]):
     image = mpimg.imread(way)
     grayImage = rgb_to_gray(image)
     image3 = TaskImg(grayImage, g11, g22, fmin1, fmax1)
-    image4 = Task3(image,mat)
+    image4 = Task3(grayImage,mat)
     fig, axs = plt.subplots(nrows=2, ncols=2)
     fig.suptitle('Фотографии')
     axs[0][0].imshow(image)
@@ -116,4 +114,4 @@ def Action(way, g11, g22, fmin1, fmax1, mat=[[-1, 0, 0],[0,1,0],[0,0,0]]):
     axs[1][0].imshow(image3)
     axs[1][1].imshow(image4)
     plt.show()
-#Action("berserk.jpeg", 255, 255, 1, 2)
+Action("berserk.jpeg", 0, 255, 40, 60)
