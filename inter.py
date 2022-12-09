@@ -128,10 +128,10 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         self.label.setText(_translate("MainWindow", "<html><head/><body><p>Выполнил студент группы</p><p>6315 Едавкин Степан</p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "Введите путь"))
-        self.label_3.setText(_translate("MainWindow", "Зачение порога"))
+        self.label_3.setText(_translate("MainWindow", "g1 и g2"))
         self.label_4.setText(_translate("MainWindow", "min"))
         self.label_5.setText(_translate("MainWindow", "max"))
-        self.label_6.setText(_translate("MainWindow", "Рабочий диапозон"))
+        self.label_6.setText(_translate("MainWindow", "fmin и fmax"))
         self.pushButton.setText(_translate("MainWindow", "Запустить все"))
         self.label_7.setText(_translate("MainWindow", "Задание 2"))
         self.label_9.setText(_translate("MainWindow", "Задание 3"))
